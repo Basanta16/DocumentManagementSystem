@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/baseAdmin::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title he</title>
+</head>
+<body>
+	<section>
+		<div  class="card mr-3 ml-3">
+			<div class="card-body">
+				<div class="container text-center">
+				<img th:src="@{'/img/'+${customer.image}}" class="mypp" style="width:200px; height:200px;" alt="profile photo" src="">
+					<h3 class="mt-3" th:text="${customer.firstName}+' '+${customer.secondName}"></h3>
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">Customer ID</th>
+					      <th scope="col">ADBL<span th:text="${customer.cid}"></span></th>
+					     
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">Email</th>
+					      <td><span th:text="${customer.email}"></span></td>
+					      
+					    </tr>
+					     <tr>
+					      <th scope="row">Phone</th>
+					      <td><span th:text="${customer.phone}"></span></td>
+					      
+					    </tr>
+					   
+					  </tbody>
+					  
+					</table>
+					 <div class="description">
+					  
+					  <th:block th:utext="${customer.description}"></th:block>
+					  
+					  </div>
+					  <div class="container mt-3">
+					  	
+						 <button th:onclick="|deleteDetails(${customer.cid})|" class="btn btn-danger btn-sm btn-block">Delete</button>
+					  	<form method="post" th:action="@{'/admin/updateDetails/'+${customer.cid}}" class="mt-2">
+						      	<button type="submit" class="btn btn-primary btn-sm btn-block">Update</button>
+						      
+						      </form>
+					  </div>
+				</div>
+			
+			</div>
+		
+		
+		</div>
+	
+	</section>
+</body>
+</html> 
+</html>
